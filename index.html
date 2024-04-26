@@ -1797,16 +1797,14 @@
         <script src="./script.js"></script>
         <script>
             document.addEventListener("DOMContentLoaded", function () {
-                const url = window.location.href;
-                const params = new URLSearchParams(url.search);
-                const name = params.get("name");
+                const urlParams = new URLSearchParams(window.location.search);
+                const name = urlParams.get("name");
 
                 console.log(name);
 
-                const hasilNamaElemen =
-                    document.getElementById("guestNameSlot");
+                const guestNameSlot = document.getElementById("guestNameSlot");
 
-                hasilNamaElemen.textContent = name ?? "-";
+                guestNameSlot.textContent = name ?? "Guest";
             });
         </script>
         <script
