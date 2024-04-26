@@ -1805,6 +1805,43 @@
                 guestNameSlot.textContent = name ?? "Guest";
             });
         </script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const targetDate = new Date("2024-05-08T00:00:00").getTime();
+
+                const interval = setInterval(function () {
+                    const now = new Date().getTime();
+                    const distance = targetDate - now;
+
+                    // Hitung waktu yang tersisa
+                    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                    const hours = Math.floor(
+                        (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+                    );
+                    const minutes = Math.floor(
+                        (distance % (1000 * 60 * 60)) / (1000 * 60)
+                    );
+                    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                    document.querySelector(
+                        ".countdown-item.day .number"
+                    ).innerText = days;
+                    document.querySelector(
+                        ".countdown-item.hour .number"
+                    ).innerText = hours;
+                    document.querySelector(
+                        ".countdown-item.minute .number"
+                    ).innerText = minutes;
+                    document.querySelector(
+                        ".countdown-item.second .number"
+                    ).innerText = seconds;
+
+                    if (distance < 0) {
+                        clearInterval(interval);
+                    }
+                }, 1000);
+            });
+        </script>
         <script
             defer
             src="https://static.cloudflareinsights.com/beacon.min.js/v55bfa2fee65d44688e90c00735ed189a1713218998793"
